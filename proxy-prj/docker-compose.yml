@@ -16,7 +16,7 @@ services:
         ports:
           - 80:80
         volumes:
-          - ./web/proxy:/var/www/web
+          #- ./web/proxy:/var/www/web
           - ${LOGS_PREFIX_PATH}/proxy/:/var/log/nginx
         restart: always
         networks:

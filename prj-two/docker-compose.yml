@@ -10,7 +10,7 @@ services:
         ports:
           - 8002:80
         volumes:
-          - ./web:/var/www/web
+          #- ./web:/var/www/web
           - ${LOGS_PREFIX_PATH}/web-two/:/var/log/nginx
         restart: always
         networks:
