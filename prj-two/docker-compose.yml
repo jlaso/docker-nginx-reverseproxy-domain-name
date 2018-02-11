@@ -1,0 +1,19 @@
+version: '2'
+
+networks:
+    prj_two_net:
+
+services:
+
+    web:
+        build: docker/nginx
+        ports:
+          - 8002:80
+        volumes:
+          - ./web:/var/www/web
+          - ${LOGS_PREFIX_PATH}/web-two/:/var/log/nginx
+        restart: always
+        networks:
+          - prj_two_net
+        hostname: prj_two
+        container_name: prj_two

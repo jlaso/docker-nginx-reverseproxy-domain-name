@@ -1,0 +1,24 @@
+version: '2'
+
+# https://docs.docker.com/compose/networking/#configure-the-default-network (Use a pre-existing network)
+networks:
+  prj_one_net:
+      external:
+        name: prjone_prj_one_net
+  prj_two_net:
+      external:
+        name: prjtwo_prj_two_net
+
+services:
+
+    proxy:
+        build: docker/nginx
+        ports:
+          - 80:80
+        volumes:
+          - ./web/proxy:/var/www/web
+          - ${LOGS_PREFIX_PATH}/proxy/:/var/log/nginx
+        restart: always
+        networks:
+          - prj_one_net
+          - prj_two_net

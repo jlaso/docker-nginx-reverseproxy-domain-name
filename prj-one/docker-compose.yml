@@ -1,0 +1,19 @@
+version: '2'
+
+networks:
+    prj_one_net:
+
+services:
+
+    web:
+        build: docker/nginx
+        ports:
+          - 8001:80
+        volumes:
+          - ./web:/var/www/web
+          - ${LOGS_PREFIX_PATH}/web-one/:/var/log/nginx
+        restart: always
+        networks:
+          - prj_one_net
+        hostname: prj_one
+        container_name: prj_one
